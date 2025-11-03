@@ -1,0 +1,71 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background-image: url('bg.jpg'); /* your image file name */
+    background-size: cover; /* make it cover the screen */
+    background-position: center; /* center the image */
+    background-repeat: no-repeat; /* avoid repeating */
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    color: #1A1D21;
+}
+
+
+/* HEADER */
+header {
+  background: linear-gradient(90deg, #002f8781 0%, #009e5f96 100%);
+  color: #F8F5EE;
+  padding: 5px 5px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* MAIN TITLES */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  color: #1A1D1F;
+  font-size: 50px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* BODY TEXT */
+p {
+  font-family: 'Inter', sans-serif;
+  color: #1B1D1F;
+  font-size: 18px;
+  padding: 0 20px 20px 20px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* MAIN CONTAINER */
+.container {
+    text-align: center;
+    margin-top: 10vh; /* reduced space at top */
+    margin-bottom: 0;
+}
+
+
+/* BUTTON */
+.startbtn {
+  background-color: #006DAB; /* Yonex Blue */
+  color: #FAFBFC;
+  border: none;
+  padding: 15px 40px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.startbtn:hover {
+  background-color: #1F8A70; /* Yonex Green on hover */
+  transform: translateY(-3px);
+}
