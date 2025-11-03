@@ -1,0 +1,191 @@
+/* ======== BASIC SETUP (Copied from your CSS) ======== */
+html, body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e5f3e5; 
+    color: #40474b;
+    background-image: url('bg1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* ======== NAVIGATION BAR (Copied from your CSS) ======== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafff7;
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: #40474b;
+    transition: all 0.3s ease;
+}
+
+.nav-brand:hover {
+    transform: translateY(-3px);
+    color: #006DAB;
+}
+
+.nav-brand h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #40474b;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #006DAB;
+}
+
+/* ======== ABOUT PAGE STYLES ======== */
+
+/* --- Header Title (like your other pages) --- */
+.about-header {
+    text-align: center;
+    margin: 50px 0;
+}
+.about-header h1 {
+    font-size: 42px; /* Smaller header for a subpage */
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.about-header h1:hover {
+    color: #006DAB;
+    transform: translateY(-5px);
+}
+.about-header p {
+    font-size: 18px;
+    color: #555;
+    font-style: italic;
+}
+
+/* --- NEW: Profile Section Styles --- */
+.profile-section {
+    display: flex;
+    align-items: center;
+    background-color: #fafff7; /* Your card color */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin: 30px auto; /* Center it */
+    max-width: 800px; /* Match the content box */
+}
+
+.profile-image-placeholder {
+    width: 120px;
+    height: 120px;
+    background-color: #ddd; /* Gray placeholder */
+    border-radius: 50%; /* Makes it a circle */
+    flex-shrink: 0; /* Stops it from being squished */
+    
+    /* ADD THIS to hide parts of the image that overflow */
+    overflow: hidden; 
+}
+
+/* --- THIS IS THE NEW FIX --- */
+.profile-image-placeholder img {
+    width: 100%;            /* Make image fill the container's width */
+    height: 100%;           /* Make image fill the container's height */
+    object-fit: cover;    /* This is the key: it scales the image */
+                            /* to fill the space without stretching */
+}
+/* --- End of New Fix --- */
+
+
+.profile-info {
+    padding-left: 30px;
+}
+
+.profile-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #1F8A70; /* Your green accent */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.profile-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.profile-info p:last-child {
+    margin-bottom: 0;
+}
+/* --- End of New Profile Styles --- */
+
+
+/* --- Main Content Box --- */
+.about-content {
+    max-width: 800px; /* Good width for reading text */
+    margin: 30px auto; /* Center the box */
+    background-color: #fafff7; /* Your off-white card color */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px 40px;
+}
+
+.about-content h2 {
+    font-size: 28px;
+    color: #1F8A70; /* Your green accent */
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-top: 30px; /* Space between sections */
+}
+/* Make the first h2 have less top space */
+.about-content h2:first-child {
+    margin-top: 0;
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.7; /* Extra space for easy reading */
+    color: #40474b;
+}
+
+.about-content ul {
+    list-style: square; /* A slightly different bullet */
+    padding-left: 20px;
+}
+
+.about-content li {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+}

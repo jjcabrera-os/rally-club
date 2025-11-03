@@ -1,0 +1,388 @@
+/* ======== BASIC SETUP ======== */
+html, body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e5f3e5; 
+    color: #40474b;
+    background-image: url('bg1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* ======== NAVIGATION BAR ======== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafff7;
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: #40474b;
+    transition: all 0.3s ease;
+}
+
+.nav-brand:hover {
+    transform: translateY(-3px);
+    color: #006DAB;
+}
+
+.nav-brand h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #40474b;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #006DAB;
+}
+
+/* ======== RE-USABLE BUTTON ======== */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #1F8A70;
+    color: #e3e4e6;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    padding: 10px 40px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background-color: #006DAB;
+    transform: translateY(-3px);
+}
+
+/* ======== QUEUE PAGE STYLES ======== */
+
+/* --- Header Title --- */
+.queue-header {
+    text-align: center;
+    margin: 50px 0;
+}
+.queue-header h1 {
+    font-size: 56px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.queue-header h1:hover {
+    color: #006DAB;
+    transform: translateY(-5px);
+}
+
+.queue-header p {
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* --- 2-Column Layout --- */
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+/* --- Left Column: Sidebar --- */
+.queue-sidebar {
+    flex-basis: 35%;
+}
+
+.btn-create {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 0;
+}
+
+.filter-card {
+    background-color: #fafff7;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+}
+
+.filter-card h3 {
+    margin-top: 0;
+    font-size: 24px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* --- Right Column: Lists --- */
+.right-column {
+    flex-basis: 65%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* --- Available Games List --- */
+.queue-list {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+}
+
+.queue-list h2 {
+    margin-top: 0;
+    font-size: 28px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+.game-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.game-item-empty {
+    text-align: center;
+    padding: 40px;
+}
+.game-item-empty a {
+    color: #1F8A70;
+    font-weight: 500;
+    text-decoration: none;
+}
+.game-item-empty a:hover {
+    text-decoration: underline;
+}
+
+/* --- Game Item Styles --- */
+.game-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+.game-item:last-child {
+    border-bottom: none;
+}
+.game-item:hover {
+    background-color: #f9f9ff;
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+}
+
+.game-location {
+    font-family: 'Inter', sans-serif; 
+    font-weight: 500; 
+    font-size: 20px;
+    color: #1F8A70;
+}
+
+.game-info span {
+    font-size: 14px;
+    color: #555;
+}
+
+.game-item-players {
+    font-size: 13px;
+    font-weight: 400; 
+    color: #555;
+    margin-top: 4px; 
+}
+
+/* --- UPDATED JOIN BUTTON --- */
+.game-join-btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #1F8A70;
+    color: #e3e4e6;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    padding: 8px 18px; /* Slightly smaller padding */
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    white-space: nowrap; 
+}
+.game-join-btn:hover {
+    background-color: #006DAB;
+    transform: translateY(-2px);
+}
+
+/* ======== TIME RANGE STYLES ======== */
+.time-range-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap; 
+}
+.time-range-group input[type="number"] {
+    width: 45px;
+    padding: 10px 5px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.time-range-group select {
+    width: 65px;
+    padding: 10px 5px;
+}
+.time-range-group span {
+    font-weight: 500;
+}
+.time-range-group .to-label {
+    margin: 0 5px;
+    font-style: italic;
+    color: #555;
+}
+
+/* ======== "MY GAMES" STYLES ======== */
+.my-games {
+    background-color: #fafff7; 
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+}
+.my-games h2 {
+    margin-top: 0;
+    font-size: 28px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+.my-game-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.my-game-item-empty {
+    text-align: center;
+    padding: 40px;
+}
+.my-game-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    border-bottom: 1px solid #eee;
+}
+.my-game-item:last-child {
+    border-bottom: none;
+}
+.my-game-players {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1F8A70;
+}
+
+
+/* --- UPDATED: Delete button styles --- */
+.my-game-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between player count and button */
+}
+
+.game-delete-btn {
+    background-color: #D9534F; /* Red "danger" color */
+    color: #e3e4e6;
+    border: none;
+    
+    /* These match the .game-join-btn */
+    padding: 8px 18px; 
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.game-delete-btn:hover {
+    background-color: #C9302C; /* Darker red on hover */
+    transform: translateY(-2px);
+}
+
+
+/* --- Placeholder Fixes --- */
+input::placeholder {
+    color: #aaa;
+    opacity: 1; 
+}
+input[type="date"]:required:invalid {
+    color: #aaa;
+}
+input[type="date"]:valid {
+    color: #40474b; 
+}

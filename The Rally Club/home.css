@@ -1,165 +1,212 @@
-/* GLOBAL SETTINGS */
+/* ======== BASIC SETUP ======== */
+/* We use the same fonts you imported */
 html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Inter', sans-serif;
-  background-color: #f8fafc;
-  color: #1A1D21;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e5f3e5; /* A very light green, like your screenshot */
+    color: #40474b;
+    background-image: url('bg1.jpg'); /* Your background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: linear-gradient(135deg, #1F8A70, #006DAB);
-  color: #fff;
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
 }
 
-.logo-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.container {
+    max-width: 1100px;
+    margin: 20px auto; /* Center the main content */
+    padding: 0 10px;
 }
 
-.logo-box img {
-  height: 60px;
+/* ======== NAVIGATION BAR ======== */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Puts brand on left, links on right */
+    align-items: center;
+    background-color: #fafff7;
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.logo-box h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px;
-  margin: 0;
-  letter-spacing: 1px;
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: #40474b;
+    transition: all 0.3s ease;
 }
 
-/* MAIN GRID (PUZZLE STYLE) */
-.main-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-  padding: 40px;
+.nav-brand:hover {
+    transform: translateY(-3px);
+    color: 006DAB;
 }
 
-/* PUZZLE SECTIONS */
-.section {
-  background: #fff;
-  border-radius: 18px;
-  padding: 25px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.nav-brand h3 {
+    margin: 0;
+    font-size: 22px;
 }
 
-.section:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 25px;
 }
 
-/* PUZZLE COLORS */
-.court-section {
-  background: linear-gradient(160deg, #F0FAF7, #E0F7F1);
+.nav-links a {
+    text-decoration: none;
+    color: #40474b;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
 }
 
-.add-queue {
-  background: linear-gradient(160deg, #E9F2FB, #D9EBF7);
+.nav-links a:hover {
+    color: #006DAB;
 }
 
-.community {
-  background: linear-gradient(160deg, #FFF6E7, #FFEFCC);
+/* ======== WELCOME SECTION ======== */
+.welcome {
+    text-align: center;
+    margin: 50px 0;
 }
 
-.profile {
-  background: linear-gradient(160deg, #F9EEF6, #F4E0F0);
+.welcome h1 {
+    font-size: 56px; /* A bit smaller than the startup page H1 */
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* TEXT STYLING */
-h2 {
-  font-family: 'Playfair Display', serif;
-  margin-top: 0;
-  color: #1F8A70;
+.welcome h1:hover {
+    color: #006DAB;
+    transform: translateY(-5px);
 }
 
-h3 {
-  font-family: 'Playfair Display', serif;
-  margin-bottom: 10px;
-  color: #40474b;
+.welcome p {
+    font-size: 18px;
+    color: #555;
 }
 
-/* QUEUE CARDS */
-.queue-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+/* ======== FEATURE CARDS ======== */
+.feature-cards {
+    display: flex;
+    justify-content: center; /* Center the cards */
+    gap: 25px;
+    flex-wrap: wrap; /* Allows cards to stack on small screens */
 }
 
-.queue-card {
-  background: white;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  flex: 1 1 200px;
+.card {
+    background-color: #fafff7;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    text-align: center;
+    flex-basis: 300px; /* Each card tries to be 300px wide */
+    transition: all 0.3s ease;
 }
 
-.queue-card button {
-  margin-top: 10px;
-  background-color: #1F8A70;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 20px;
-  cursor: pointer;
-  transition: 0.3s ease;
+.card:hover {
+    transform: translateY(-5px); /* Lifts the card on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
-.queue-card button:hover {
-  background-color: #006DAB;
+.card h2 {
+    font-size: 28px;
+    color: #1F8A70; /* Your main green color */
+    margin-top: 0;
 }
 
-/* FORM */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* ======== RE-USABLE BUTTON ======== */
+/* We'll make a generic .btn class based on your .startbtn */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #1F8A70; /* Your main green color */
+    color: #e3e4e6;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    padding: 10px 40px; /* Made padding a bit smaller */
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    margin-top: 15px;
 }
 
-input, button {
-  font-family: 'Inter', sans-serif;
-  font-size: 15px;
+.btn:hover {
+    background-color: #006DAB; /* Your hover color */
+    transform: translateY(-3px);
 }
 
-form input {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+/* ======== UPCOMING GAMES ======== */
+.upcoming-games {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    margin: 60px 0; /* Add space above and below */
 }
 
-form button {
-  background-color: #1F8A70;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 10px;
-  cursor: pointer;
-  transition: 0.3s;
+.upcoming-games h2 {
+    margin-top: 0;
+    font-size: 28px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
 }
 
-form button:hover {
-  background-color: #006DAB;
+.game-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
 }
 
-/* BUTTONS IN OTHER SECTIONS */
-.section button {
-  background-color: #1F8A70;
-  color: #fff;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease;
+.game-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    border-bottom: 1px solid #eee;
 }
 
-.section button:hover {
-  background-color: #006DAB;
+.game-item:last-child {
+    border-bottom: none;
+}
+
+.game-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.game-details strong {
+    font-size: 18px;
+}
+
+.game-details span {
+    font-size: 14px;
+    color: #555;
+}
+
+.game-players {
+    font-weight: 500;
+    font-size: 16px;
+    color: #1F8A70;
+}
+
+.game-item-empty {
+    text-align: center;
+    padding: 10px;
+}
+
+.game-item-empty a {
+    color: #1F8A70;
+    font-weight: 500;
 }

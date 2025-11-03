@@ -3,89 +3,86 @@ html, body {
 }
 
 body {
-    background-image: url('bg1.jpg'); /* your image file name */
-    background-size: cover; /* make it cover the screen */
-    background-position: center; /* center the image */
-    background-repeat: no-repeat; /* avoid repeating */
+    background-image: url('bg1.jpg'); /* your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     font-family: 'Inter', sans-serif;
     margin: 0;
     color: #1A1D21;
 }
 
-
 /* HEADER */
 header {
-  color: #40474b;
-  padding: 0px 30px;
-  text-align: left;
-  font-family: 'Playfair Display', serif;
-  font-size: 20px;
-  letter-spacing: 1px;
+    color: #40474b;
+    padding: 0px 30px;
+    text-align: left;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 10px 30px;
-  transition: all 0.3s ease;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .header:hover {
-  transform: translateY(-3px);
+    transform: translateY(-3px);
 }
 
 /* MAIN TITLES */
 h1 {
-  font-family: 'Playfair Display', serif;
-  color: #40474b;
-  font-size: 170px;
-  padding: 0px;
-  text-align: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    color: #40474b;
+    font-size: 130px;
+    padding: 0px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 h1:hover {
-  color: #1F8A70; /* Yonex Blue on hover */
-  transform: translateY(-5px);
+    color: #1F8A70; /* Yonex Blue on hover */
+    transform: translateY(-5px);
 }
 
 /* BODY TEXT */
 p {
-  font-family: 'Inter', sans-serif;
-  color: #40474b;
-  font-size: 18px;
-  padding: 0 20px 20px 20px;
-  line-height: 1.6;
-  text-align: center;
+    font-family: 'Inter', sans-serif;
+    color: #40474b;
+    font-size: 18px;
+    
+    line-height: 1.6;
+    text-align: center;
 }
 
 /* MAIN CONTAINER */
 .container {
     text-align: center;
-    margin-top: 10vh; /* reduced space at top */
-    margin-bottom: 0;
+    margin-top: 10vh;
 }
-
 
 /* BUTTON */
 .startbtn {
-  background: linear-gradient(90deg, #006DAB, #1F8A70);
-  color: #e3e4e6;
-  font-family: 'Inter', sans-serif;
-  border: none;
-  margin-top: 15px;
-  padding: 10px 110px;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
+    background-color: #1F8A70; /* Yonex Blue */
+    color: #e3e4e6;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    padding: 10px 90px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
 .startbtn:hover {
-  background-color: #006DAB; /* Yonex Green on hover */
-  transform: translateY(-3px);
+    background-color: #006DAB; /* Yonex Green on hover */
+    transform: translateY(-3px);
 }

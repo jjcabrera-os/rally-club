@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queues - The Rally Club</title>
+    <link rel="stylesheet" href="queues.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="home.html" class="nav-brand">
+            <img src="courtlogo.png" alt="Logo" height="50">
+            <h3>The Rally Club</h3>
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="queues.html">Queue</a></li>
+            <li><a href="connect.html">Connect</a></li>
+            <li><a href="about.html">About</a></li> 
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="queue-header">
+            <h1>Open Queues</h1>
+            <p>Find a game that matches your style, or create your own.</p>
+        </div>
+
+        <div class="content">
+
+            <aside class="queue-sidebar">
+                
+                <div class="filter-card">
+                    <h3>Create Game</h3>
+                    
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" placeholder="e.g., Main St. Badminton Hall">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="start-hour">Time Range</label>
+                        <div class="time-range-group">
+                            <input type="number" id="start-hour" placeholder="4" min="1" max="12">
+                            <span>:</span>
+                            <input type="number" id="start-min" placeholder="30" min="0" max="59">
+                            <select id="start-am-pm">
+                                <option value="AM">AM</option>
+                                <option value="PM" selected>PM</option>
+                            </select>
+                            <span class="to-label">to</span>
+                            <input type="number" id="end-hour" placeholder="5" min="1" max="12">
+                            <span>:</span>
+                            <input type="number" id="end-min" placeholder="30" min="0" max="59">
+                            <select id="end-am-pm">
+                                <option value="AM">AM</option>
+                                <option value="PM" selected>PM</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maxPlayers">Max Players</label>
+                        <input type="number" id="maxPlayers" name="maxPlayers" placeholder="e.g., 4" min="2">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price (₱)</label>
+                        <input type="number" id="price" name="price" placeholder="e.g., 150" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skill">Skill Level</label>
+                        <select id="skill" name="skill">
+                            <option value="Any">Any Skill Level</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn-create">Create Your Queue</button>
+                </div>
+            </aside>
+
+            <section class="right-column">
+                
+                <div class="queue-list">
+                    <h2>Available Games</h2>
+                    <ul class="game-list">
+                        <li class="game-item-empty">
+                            <p>No games have been created. <a href="#">Try creating one!</a></p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="my-games">
+                    <h2>My Games</h2>
+                    <ul class="my-game-list">
+                        <li class="my-game-item-empty">
+                            <p>You have not joined any games.</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <script src="queues.js"></script>
+</body>
+</html>

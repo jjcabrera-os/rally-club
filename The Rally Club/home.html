@@ -1,71 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Rally Club | Home</title>
-  <link rel="stylesheet" href="home.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - The Rally Club</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <header class="header">
-    <div class="logo-box">
-      <img src="courtlogo.png" alt="The Rally Club Logo">
-      <h3>The Rally Club</h3>
-    </div>
-  </header>
 
-  <main class="main-grid">
-    <!-- COURT SECTION -->
-    <section class="section court-section">
-      <h2>🏸 Courts</h2>
-      <p>Available play queues at your local clubs.</p>
+    <nav class="navbar">
+        <a href="home.html" class="nav-brand">
+            <img src="courtlogo.png" alt="Logo" height="50">
+            <h3>The Rally Club</h3>
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="queues.html">Queue</a></li>
+            <li><a href="connect.html">Connect</a></li>
+            <li><a href="about.html">About</a></li> 
+        </ul>
+    </nav>
 
-      <div class="court-location">
-        <h3>📍 The Rally Club - Tigatto Court</h3>
-        <div class="queue-cards">
-          <div class="queue-card">
-            <h4>3 PM - 6 PM</h4>
-            <p>8 Players • 5 Games • ₱220</p>
-            <p>6/8 players joined</p>
-            <button>Join Queue</button>
-          </div>
-          <div class="queue-card">
-            <h4>6 PM - 9 PM</h4>
-            <p>8 Players • 5 Games • ₱220</p>
-            <p>3/8 players joined</p>
-            <button>Join Queue</button>
-          </div>
-        </div>
-      </div>
-    </section>
+    <main class="container">
 
-    <!-- ADD QUEUE SECTION -->
-    <section class="section add-queue">
-      <h2>➕ Add a Queue</h2>
-      <p>Create your own playtime and invite others to join!</p>
-      <form>
-        <input type="text" placeholder="Court Location">
-        <input type="datetime-local">
-        <input type="number" placeholder="Max Players (default 8)">
-        <button type="submit">Add Queue</button>
-      </form>
-    </section>
+        <section class="welcome">
+            <h1>Find Your Next Match</h1>
+            <p>Join an existing queue or create your own game. Your community is waiting.</p>
+        </section>
 
-    <!-- COMMUNITY SECTION -->
-    <section class="section community">
-      <h2>👥 Community</h2>
-      <p>See who’s playing today, post updates, and meet players near you.</p>
-      <button>View Community</button>
-    </section>
+        <div class="content">
+            <section class="feature-cards">
+            <div class="card">
+                <h2>Find a Game</h2>
+                <p>Browse all open queues by date, location, and skill level.</p>
+                <a href="queues.html" class="btn">Browse Queues</a>
+            </div>
+            <div class="card">
+                <h2>The Community</h2>
+                <p>Connect with other players.</p>
+                <a href="connect.html" class="btn">View Feed</a>
+            </div>
+            </section>
 
-    <!-- PROFILE SECTION -->
-    <section class="section profile">
-      <h2>🏆 Your Stats</h2>
-      <p>Games Played: <b>24</b><br>Win Rate: <b>68%</b><br>Favorite Court: <b>Tigatto</b></p>
-      <button>View Profile</button>
-    </section>
-  </main>
+            </div>
+        
+    </main>
+
+    <script src="home.js"></script>
 </body>
 </html>

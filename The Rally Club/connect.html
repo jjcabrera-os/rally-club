@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect - The Rally Club</title>
+    <link rel="stylesheet" href="connect.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="home.html" class="nav-brand">
+            <img src="courtlogo.png" alt="Logo" height="50">
+            <h3>The Rally Club</h3>
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="queues.html">Queue</a></li>
+            <li><a href="connect.html">Connect</a></li>
+            <li><a href="about.html">About</a></li> 
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="connect-header">
+            <h1>Community Feed</h1>
+            <p>Connect with players and share your thoughts.</p>
+        </div>
+
+        <div class="content">
+
+            <aside class="connect-sidebar">
+                <div class="find-player-card">
+                    <h3>Find Players</h3>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search by name...">
+                        <button class="btn">Search</button>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="create-post-card">
+                <textarea id="post-text-input" placeholder="What's on your mind?"></textarea>
+                <button id="add-post-btn" class="btn">Add Post</button>
+            </section>
+
+            <section class="feed-list">
+                <h2>Recent Posts</h2>
+                <ul class="post-list">
+                    
+                    <li class="feed-post">
+                        <div class="post-header">
+                            <div class="post-avatar"></div>
+                            <div class="post-user">
+                                <strong>Mykho</strong>
+                                <span>8 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="post-body">
+                            <p>Grabe, praktis pa gyud ko aning akong backhand clear. Layo pa kaayo sa tinuod. 😅</p>
+                        </div>
+                    </li>
+
+                    <li class="feed-post">
+                        <div class="post-header">
+                            <div class="post-avatar"></div>
+                            <div class="post-user">
+                                <strong>Mykho</strong>
+                                <span>2 days ago</span>
+                            </div>
+                        </div>
+                        <div class="post-body">
+                            <p>Sakit sa braso mag-backhand drop shot, pero nindot tan-awon kung makuha nimo. 💪 #badminton</p>
+                        </div>
+                    </li>
+
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="connect.js"></script>
+</body>
+</html>
