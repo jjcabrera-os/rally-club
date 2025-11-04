@@ -10,6 +10,7 @@ html, body {
     background-position: center;
     background-attachment: fixed;
     min-height: 100vh;
+    transition: background-color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -17,9 +18,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .container {
-    max-width: 1300px;
+    max-width: 1300px; 
     margin: 20px auto;
     padding: 0 20px;
+    padding-bottom: 60px; 
 }
 
 /* ======== NAVIGATION BAR ======== */
@@ -30,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #fafff7;
     padding: 10px 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
 }
 
 .nav-brand {
@@ -57,6 +60,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     gap: 25px;
+    align-items: center;
 }
 
 .nav-links a {
@@ -118,7 +122,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* --- Single Column Layout --- */
 .content {
-    max-width: 1100;
+    max-width: 1100px; 
     margin: 0 auto;
 }
 
@@ -132,6 +136,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 25px;
+    transition: background-color 0.3s ease;
 }
 
 .find-player-card h3 {
@@ -153,6 +158,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
 .search-bar .btn {
@@ -160,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px 20px; 
 }
 
-/* --- NEW: Create Post Card --- */
+/* --- Create Post Card --- */
 .create-post-card {
     background-color: #fafff7;
     border-radius: 8px;
@@ -169,9 +175,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
+    transition: background-color 0.3s ease;
 }
 
-/* This styles the text box */
 .create-post-card textarea {
     width: 100%;
     min-height: 80px;
@@ -180,16 +186,16 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-sizing: border-box; /* Important */
-    resize: vertical; /* Allows user to resize height */
+    box-sizing: border-box; 
+    resize: vertical; 
     margin-bottom: 15px;
+    transition: all 0.3s ease;
 }
 
-/* This styles the button */
 #add-post-btn {
-    width: 150px; /* Give it a fixed width */
-    align-self: flex-end; /* Push it to the right */
-    margin-top: 0; /* Remove default button margin */
+    width: 150px; 
+    align-self: flex-end; 
+    margin-top: 0; 
 }
 
 
@@ -199,6 +205,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 1px 30px 30px 30px;
+    transition: background-color 0.3s ease;
 }
 
 .feed-list h2 {
@@ -213,7 +220,6 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-/* NEW: Empty message style */
 .post-item-empty {
     text-align: center;
     padding: 40px;
@@ -238,7 +244,7 @@ h1, h2, h3, h4, h5, h6 {
 .post-avatar {
     width: 45px;
     height: 45px;
-    background-color: #ddd; /* Placeholder avatar */
+    background-color: #ddd; 
     border-radius: 50%;
 }
 
@@ -261,6 +267,177 @@ h1, h2, h3, h4, h5, h6 {
     margin: 15px 0;
     font-size: 15px;
     line-height: 1.6;
-    /* This makes text break nicely */
     word-wrap: break-word;
+}
+
+/* ======== STICKY FOOTER STYLES ======== */
+.footer {
+    background-color: #fafff7;
+    text-align: center;
+    padding: 20px 30px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.footer p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+/* ======== TOGGLE SWITCH STYLES ======== */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px; 
+    height: 24px;
+}
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "\2600"; 
+    height: 18px; 
+    width: 18px; 
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #1F8A70; 
+}
+input:checked + .slider {
+    background-color: #1F8A70; 
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px); 
+    content: "\263E"; 
+    color: #1F8A70; 
+}
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* ======== "Parisian Autumn" DARK MODE STYLES ======== */
+
+body.dark-mode {
+    background-image: none;
+    background-color: #2f362f; 
+    color: #e8e3dc; 
+}
+
+/* Dark Navbar/Footer */
+body.dark-mode .navbar,
+body.dark-mode .footer {
+    background-color: #3a403a; 
+}
+body.dark-mode .nav-links a {
+    color: #e8e3dc;
+}
+body.dark-mode .nav-brand {
+    color: #e8e3dc;
+}
+body.dark-mode .footer p {
+    color: #aaa;
+}
+
+/* Dark Toggle */
+body.dark-mode input:checked + .slider {
+    background-color: #b89a6d; 
+}
+body.dark-mode .slider:before {
+    color: #b89a6d; 
+}
+body.dark-mode input:checked + .slider:before {
+    color: #b89a6d; 
+}
+
+/* Dark Header */
+body.dark-mode .connect-header h1 {
+    color: #ffffff;
+}
+body.dark-mode .connect-header p {
+    color: #e8e3dc;
+}
+body.dark-mode .connect-header h1:hover,
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-brand:hover {
+    color: #d4b886; 
+}
+
+/* Dark Cards */
+body.dark-mode .find-player-card,
+body.dark-mode .create-post-card,
+body.dark-mode .feed-list {
+    background-color: #3a403a;
+    border-color: #555;
+}
+body.dark-mode .find-player-card h3,
+body.dark-mode .feed-list h2 {
+    border-color: #555;
+}
+body.dark-mode .feed-post {
+    border-color: #555;
+}
+
+/* Dark Inputs */
+body.dark-mode .search-bar input[type="text"],
+body.dark-mode .create-post-card textarea {
+    background-color: #2f362f;
+    color: #e8e3dc;
+    border-color: #555;
+}
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #888;
+}
+
+/* Dark Feed */
+body.dark-mode .post-user strong {
+    color: #e8e3dc;
+}
+body.dark-note .post-user span {
+    color: #aaa;
+}
+body.dark-mode .post-avatar {
+    background-color: #555;
+}
+
+/* Dark Buttons */
+body.dark-mode .btn {
+    background-color: #b89a6d;
+    color: #2f362f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+body.dark-mode .btn:hover {
+    background-color: #d4b886;
 }

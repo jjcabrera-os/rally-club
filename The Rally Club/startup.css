@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-    background-image: url('bg1.jpg'); /* your background image */
+    background-image: url('bg1.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -48,7 +48,7 @@ h1 {
 }
 
 h1:hover {
-    color: #1F8A70; /* Yonex Blue on hover */
+    color: #1F8A70; 
     transform: translateY(-5px);
 }
 
@@ -57,7 +57,6 @@ p {
     font-family: 'Inter', sans-serif;
     color: #40474b;
     font-size: 18px;
-    
     line-height: 1.6;
     text-align: center;
 }
@@ -70,7 +69,7 @@ p {
 
 /* BUTTON */
 .startbtn {
-    background-color: #1F8A70; /* Yonex Blue */
+    background-color: #1F8A70; 
     color: #e3e4e6;
     font-family: 'Inter', sans-serif;
     border: none;
@@ -83,6 +82,6 @@ p {
 }
 
 .startbtn:hover {
-    background-color: #006DAB; /* Yonex Green on hover */
+    background-color: #006DAB; 
     transform: translateY(-3px);
 }

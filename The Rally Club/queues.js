@@ -1,11 +1,26 @@
 // Wait for the HTML document to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- 1. CREATE OUR ARRAYS ---
+    // --- 1. DARK MODE LOGIC ---
+    const themeToggle = document.getElementById('checkbox');
+    const logoImage = document.querySelector('.nav-brand img');
+
+    themeToggle.addEventListener('click', function() {
+        if (themeToggle.checked) {
+            document.body.classList.add('dark-mode');
+            logoImage.src = 'courtlogo1.png'; // Dark mode logo
+        } else {
+            document.body.classList.remove('dark-mode');
+            logoImage.src = 'courtlogo.png'; // Light mode logo
+        }
+    });
+
+
+    // --- 2. CREATE OUR ARRAYS ---
     let allGames = [];
     let myJoinedGames = [];
 
-    // --- 2. FIND ALL THE ELEMENTS ---
+    // --- 3. FIND ALL THE GAME ELEMENTS ---
     const createButton = document.querySelector('.btn-create');
     const gameList = document.querySelector('.queue-list .game-list');
     const myGameList = document.querySelector('.my-games .my-game-list');
@@ -23,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const endMinInput = document.getElementById('end-min');
     const endAmPmInput = document.getElementById('end-am-pm');
     
-    // --- 3. FUNCTION TO ADD A GAME TO THE "AVAILABLE" LIST ---
+    // --- 4. FUNCTION TO ADD A GAME TO THE "AVAILABLE" LIST ---
     function addGameToList(gameData) {
         const emptyMessage = document.querySelector('.game-item-empty');
         if (emptyMessage) {
@@ -54,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         newJoinButton.addEventListener('click', onJoinGameClick);
     }
 
-    // --- 4. FUNCTION: ADD A GAME TO THE "MY GAMES" LIST ---
+    // --- 5. FUNCTION: ADD A GAME TO THE "MY GAMES" LIST ---
     function addGameToMyList(gameData) {
         const emptyMessage = document.querySelector('.my-game-item-empty');
         if (emptyMessage) {
@@ -65,7 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
         newGame.className = 'my-game-item';
         newGame.setAttribute('data-id', gameData.id);
 
-        // --- UPDATED HTML: Added a wrapper and the delete button ---
         newGame.innerHTML = 
             '<div class="game-info">' +
                 '<span class="game-location">' + gameData.location + '</span>' +
@@ -74,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Skill: ' + gameData.skill + ' | Price: ₱' + gameData.price +
                 '</span>' +
             '</div>' +
-            // New wrapper for player count and delete button
             '<div class="my-game-actions">' +
                 '<span class="my-game-players">' + gameData.players + ' / ' + gameData.maxPlayers + ' Joined</span>' +
                 '<button class="game-delete-btn" data-id="' + gameData.id + '">Delete</button>' +
@@ -82,17 +95,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         myGameList.appendChild(newGame);
 
-        // --- NEW: Add event listener to the delete button ---
         const deleteButton = newGame.querySelector('.game-delete-btn');
         deleteButton.addEventListener('click', onDeleteGameClick);
     }
 
-    // --- 5. FUNCTION: HANDLE "JOIN GAME" CLICK ---
+    // --- 6. FUNCTION: HANDLE "JOIN GAME" CLICK ---
     function onJoinGameClick(event) {
         event.preventDefault(); 
         const gameId = event.target.getAttribute('data-id');
 
-        // --- Check if user already joined this game ---
         let alreadyJoined = false;
         for (let i = 0; i < myJoinedGames.length; i++) {
             if (myJoinedGames[i].id == gameId) {
@@ -100,14 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             }
         }
-
-        // --- UPDATED: If already joined, just show an alert ---
         if (alreadyJoined) {
             alert('You have already joined this game!');
-            return; // Stop the function
+            return; 
         }
 
-        // --- 1. Find the game in our 'allGames' array ---
         let gameToUpdate = null;
         for (let i = 0; i < allGames.length; i++) {
             if (allGames[i].id == gameId) {
@@ -115,12 +123,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             }
         }
-
         if (gameToUpdate === null) {
             return;
         }
 
-        // --- 2. Check if the game is full ---
         let currentPlayers = parseInt(gameToUpdate.players);
         let maxPlayers = parseInt(gameToUpdate.maxPlayers);
 
@@ -129,14 +135,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // --- 3. Add the player to the array ---
         gameToUpdate.players = currentPlayers + 1;
-
-        // --- 4. Add to "My Games" list ---
         myJoinedGames.push(gameToUpdate);
         addGameToMyList(gameToUpdate); 
         
-        // --- 5. Update "Available Games" list HTML ---
         const availableListItem = document.querySelector('.game-item[data-id="' + gameId + '"]');
         if (availableListItem) {
             const playerText = availableListItem.querySelector('.game-item-players');
@@ -144,42 +146,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- 6. NEW FUNCTION: HANDLE "DELETE GAME" CLICK ---
+    // --- 7. FUNCTION: HANDLE "DELETE GAME" CLICK ---
     function onDeleteGameClick(event) {
         const gameId = event.target.getAttribute('data-id');
 
-        // --- 1. Remove from 'myJoinedGames' array ---
         let newJoinedGames = [];
         for (let i = 0; i < myJoinedGames.length; i++) {
             if (myJoinedGames[i].id != gameId) {
                 newJoinedGames.push(myJoinedGames[i]);
             }
         }
-        myJoinedGames = newJoinedGames; // Update the main array
+        myJoinedGames = newJoinedGames; 
 
-        // --- 2. Remove from "My Games" HTML list ---
         const myListItem = document.querySelector('.my-game-item[data-id="' + gameId + '"]');
         if (myListItem) {
             myListItem.remove();
         }
 
-        // --- 3. Add "empty" message back if list is empty ---
         if (myJoinedGames.length === 0) {
             myGameList.innerHTML = '<li class="my-game-item-empty"><p>You have not joined any games.</p></li>';
         }
 
-        // --- 4. Find the game in 'allGames' to decrease player count ---
         let gameToUpdate = null;
         for (let i = 0; i < allGames.length; i++) {
             if (allGames[i].id == gameId) {
-                // Subtract one player
                 allGames[i].players = allGames[i].players - 1;
                 gameToUpdate = allGames[i];
                 break;
             }
         }
 
-        // --- 5. Update the "Available Games" list HTML ---
         if (gameToUpdate) {
             const availableListItem = document.querySelector('.game-item[data-id="' + gameId + '"]');
             if (availableListItem) {
@@ -190,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    // --- 7. EVENT LISTENER FOR THE "CREATE" BUTTON ---
+    // --- 8. EVENT LISTENER FOR THE "CREATE" BUTTON ---
     createButton.addEventListener('click', function(event) {
         event.preventDefault(); 
 

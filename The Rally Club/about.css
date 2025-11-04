@@ -1,4 +1,4 @@
-/* ======== BASIC SETUP (Copied from your CSS) ======== */
+/* ======== BASIC SETUP ======== */
 html, body {
     font-family: 'Inter', sans-serif;
     margin: 0;
@@ -10,6 +10,7 @@ html, body {
     background-position: center;
     background-attachment: fixed;
     min-height: 100vh;
+    transition: background-color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -20,9 +21,10 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1100px;
     margin: 20px auto;
     padding: 0 20px;
+    padding-bottom: 60px;
 }
 
-/* ======== NAVIGATION BAR (Copied from your CSS) ======== */
+/* ======== NAVIGATION BAR ======== */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -30,6 +32,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #fafff7;
     padding: 10px 30px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
 }
 
 .nav-brand {
@@ -57,6 +60,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     gap: 25px;
+    align-items: center;
 }
 
 .nav-links a {
@@ -73,13 +77,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ======== ABOUT PAGE STYLES ======== */
 
-/* --- Header Title (like your other pages) --- */
+/* --- Header Title --- */
 .about-header {
     text-align: center;
     margin: 50px 0;
 }
 .about-header h1 {
-    font-size: 42px; /* Smaller header for a subpage */
+    font-size: 42px; 
     margin-bottom: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -94,38 +98,33 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
 }
 
-/* --- NEW: Profile Section Styles --- */
+/* --- Profile Section Styles --- */
 .profile-section {
     display: flex;
     align-items: center;
-    background-color: #fafff7; /* Your card color */
+    background-color: #fafff7;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 30px;
-    margin: 30px auto; /* Center it */
-    max-width: 800px; /* Match the content box */
+    margin: 30px auto; 
+    max-width: 800px; 
+    transition: background-color 0.3s ease;
 }
 
 .profile-image-placeholder {
     width: 120px;
     height: 120px;
-    background-color: #ddd; /* Gray placeholder */
-    border-radius: 50%; /* Makes it a circle */
-    flex-shrink: 0; /* Stops it from being squished */
-    
-    /* ADD THIS to hide parts of the image that overflow */
+    background-color: #ddd; 
+    border-radius: 50%; 
+    flex-shrink: 0; 
     overflow: hidden; 
 }
 
-/* --- THIS IS THE NEW FIX --- */
 .profile-image-placeholder img {
-    width: 100%;            /* Make image fill the container's width */
-    height: 100%;           /* Make image fill the container's height */
-    object-fit: cover;    /* This is the key: it scales the image */
-                            /* to fill the space without stretching */
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
 }
-/* --- End of New Fix --- */
-
 
 .profile-info {
     padding-left: 30px;
@@ -134,9 +133,10 @@ h1, h2, h3, h4, h5, h6 {
 .profile-info h2 {
     font-family: 'Playfair Display', serif;
     font-size: 32px;
-    color: #1F8A70; /* Your green accent */
+    color: #1F8A70;
     margin-top: 0;
     margin-bottom: 10px;
+    transition: color 0.3s ease;
 }
 
 .profile-info p {
@@ -148,39 +148,38 @@ h1, h2, h3, h4, h5, h6 {
 .profile-info p:last-child {
     margin-bottom: 0;
 }
-/* --- End of New Profile Styles --- */
-
 
 /* --- Main Content Box --- */
 .about-content {
-    max-width: 800px; /* Good width for reading text */
-    margin: 30px auto; /* Center the box */
-    background-color: #fafff7; /* Your off-white card color */
+    max-width: 800px; 
+    margin: 30px auto; 
+    background-color: #fafff7;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 30px 40px;
+    transition: background-color 0.3s ease;
 }
 
 .about-content h2 {
     font-size: 28px;
-    color: #1F8A70; /* Your green accent */
+    color: #1F8A70; 
     border-bottom: 2px solid #f0f0f0;
     padding-bottom: 10px;
-    margin-top: 30px; /* Space between sections */
+    margin-top: 30px; 
+    transition: color 0.3s ease;
 }
-/* Make the first h2 have less top space */
 .about-content h2:first-child {
     margin-top: 0;
 }
 
 .about-content p {
     font-size: 16px;
-    line-height: 1.7; /* Extra space for easy reading */
+    line-height: 1.7; 
     color: #40474b;
 }
 
 .about-content ul {
-    list-style: square; /* A slightly different bullet */
+    list-style: square;
     padding-left: 20px;
 }
 
@@ -188,4 +187,146 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 16px;
     line-height: 1.7;
     margin-bottom: 10px;
+}
+
+
+/* ======== STICKY FOOTER STYLES ======== */
+.footer {
+    background-color: #fafff7;
+    text-align: center;
+    padding: 20px 30px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.footer p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+/* ======== TOGGLE SWITCH STYLES ======== */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px; 
+    height: 24px;
+}
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "\2600"; 
+    height: 18px; 
+    width: 18px; 
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #1F8A70; 
+}
+input:checked + .slider {
+    background-color: #1F8A70; 
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px); 
+    content: "\263E"; 
+    color: #1F8A70; 
+}
+.slider.round {
+    border-radius: 34px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* ======== "Parisian Autumn" DARK MODE STYLES ======== */
+
+body.dark-mode {
+    background-image: none;
+    background-color: #2f362f; 
+    color: #e8e3dc; 
+}
+
+/* Dark Navbar/Footer */
+body.dark-mode .navbar,
+body.dark-mode .footer {
+    background-color: #3a403a; 
+}
+body.dark-mode .nav-links a {
+    color: #e8e3dc;
+}
+body.dark-mode .nav-brand {
+    color: #e8e3dc;
+}
+body.dark-mode .footer p {
+    color: #aaa;
+}
+
+/* Dark Toggle */
+body.dark-mode input:checked + .slider {
+    background-color: #b89a6d; 
+}
+body.dark-mode .slider:before {
+    color: #b89a6d; 
+}
+body.dark-mode input:checked + .slider:before {
+    color: #b89a6d; 
+}
+
+/* Dark Header */
+body.dark-mode .about-header h1 {
+    color: #ffffff;
+}
+body.dark-mode .about-header p {
+    color: #e8e3dc;
+}
+body.dark-mode .about-header h1:hover,
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-brand:hover {
+    color: #d4b886; 
+}
+
+/* Dark Content Boxes */
+body.dark-mode .profile-section,
+body.dark-mode .about-content {
+    background-color: #3a403a;
+    border-color: #555;
+}
+body.dark-mode .profile-info h2,
+body.dark-mode .about-content h2 {
+    color: #b89a6d; 
+    border-color: #555;
+}
+body.dark-mode .about-content p,
+body.dark-mode .about-content li,
+body.dark-mode .profile-info p { 
+    color: #e8e3dc;
 }

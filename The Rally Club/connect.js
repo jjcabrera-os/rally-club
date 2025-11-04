@@ -1,16 +1,31 @@
-// Wait for the HTML document to be fully loaded
+
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- 1. CREATE OUR ARRAY ---
+    // --- 1. DARK MODE LOGIC ---
+    const themeToggle = document.getElementById('checkbox');
+    const logoImage = document.querySelector('.nav-brand img');
+
+    themeToggle.addEventListener('click', function() {
+        if (themeToggle.checked) {
+            document.body.classList.add('dark-mode');
+            logoImage.src = 'courtlogo1.png'; // Dark mode logo
+        } else {
+            document.body.classList.remove('dark-mode');
+            logoImage.src = 'courtlogo.png'; // Light mode logo
+        }
+    });
+
+
+    // --- 2. CREATE OUR ARRAY ---
     // This array will hold all our posts, but only while the page is open.
     let allPosts = [];
 
-    // --- 2. FIND ALL THE ELEMENTS ---
+    // --- 3. FIND ALL THE POST ELEMENTS ---
     const postButton = document.getElementById('add-post-btn');
     const postTextInput = document.getElementById('post-text-input');
     const postList = document.querySelector('.post-list');
 
-    // --- 3. FUNCTION TO ADD A POST TO THE FEED ---
+    // --- 4. FUNCTION TO ADD A POST TO THE FEED ---
     function addPostToFeed(postData) {
         // Find and remove the "empty" message
         const emptyMessage = document.querySelector('.post-item-empty');
@@ -36,13 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<p>' + postData.text + '</p>' +
             '</div>';
         
-        // --- ADD TO TOP OF LIST ---
-        // This is the classic, beginner-friendly way to add to the top
-        // It inserts the newPost *before* the first child of the list
+        // This inserts the newPost *before* the first child of the list
         postList.insertBefore(newPost, postList.firstChild);
     }
 
-    // --- 4. EVENT LISTENER FOR THE "ADD POST" BUTTON ---
+    // --- 5. EVENT LISTENER FOR THE "ADD POST" BUTTON ---
     postButton.addEventListener('click', function() {
         // Get the text from the box
         const postText = postTextInput.value;
