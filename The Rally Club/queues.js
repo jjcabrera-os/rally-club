@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         gameList.appendChild(newGame);
 
-        // Add the click listener
         const newJoinButton = newGame.querySelector('.game-join-btn');
         newJoinButton.addEventListener('click', onJoinGameClick);
     }
@@ -144,6 +143,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const playerText = availableListItem.querySelector('.game-item-players');
             playerText.innerHTML = gameToUpdate.players + ' / ' + gameToUpdate.maxPlayers + ' Players';
         }
+
+        // --- NEW: Add the alert ---
+        alert('You have successfully joined the queue!');
     }
 
     // --- 7. FUNCTION: HANDLE "DELETE GAME" CLICK ---
@@ -229,20 +231,11 @@ document.addEventListener('DOMContentLoaded', function() {
             skill: skill,
             players: 1 
         };
-
+ 
         allGames.push(newGameData);
         addGameToList(newGameData);
 
-        // Reset the form
-        locationInput.value = "";
-        dateInput.value = "";
-        startHourInput.value = "";
-        startMinInput.value = "";
-        endHourInput.value = "";
-        endMinInput.value = "";
-        maxPlayersInput.value = "";
-        priceInput.value = "";
-        skillInput.value = "Any";
+
     });
 
 });
