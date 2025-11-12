@@ -1,43 +1,37 @@
+document.addEventListener('DOMContentLoaded', function() { 
+    // run code when page is fully loaded
 
-document.addEventListener('DOMContentLoaded', function() {
+    // dark mode toggle
+    const themeToggle = document.getElementById('checkbox'); // the checkbox
+    const logoImage = document.querySelector('.nav-brand img'); // logo image
 
-    // --- 1. DARK MODE LOGIC ---
-    const themeToggle = document.getElementById('checkbox');
-    const logoImage = document.querySelector('.nav-brand img');
-
-    themeToggle.addEventListener('click', function() {
-        if (themeToggle.checked) {
-            document.body.classList.add('dark-mode');
-            logoImage.src = 'courtlogo1.png'; // Dark mode logo
-        } else {
-            document.body.classList.remove('dark-mode');
-            logoImage.src = 'courtlogo.png'; // Light mode logo
+    themeToggle.addEventListener('click', function() {  
+        if (themeToggle.checked) {  
+            document.body.classList.add('dark-mode'); // add dark mode class
+            logoImage.src = 'courtlogo1.png'; // switch logo to dark version
+        } else {  
+            document.body.classList.remove('dark-mode'); // remove dark mode class
+            logoImage.src = 'courtlogo.png'; // switch back to light logo
         }
     });
 
+    // array to store posts temporarily
+    let allPosts = []; 
 
-    // --- 2. CREATE OUR ARRAY ---
-    // This array will hold all our posts, but only while the page is open.
-    let allPosts = [];
+    // grab post elements
+    const postButton = document.getElementById('add-post-btn'); 
+    const postTextInput = document.getElementById('post-text-input'); 
+    const postList = document.querySelector('.post-list'); 
 
-    // --- 3. FIND ALL THE POST ELEMENTS ---
-    const postButton = document.getElementById('add-post-btn');
-    const postTextInput = document.getElementById('post-text-input');
-    const postList = document.querySelector('.post-list');
+    // function to add post to feed
+    function addPostToFeed(postData) {  
+        const emptyMessage = document.querySelector('.post-item-empty');  
+        if (emptyMessage) emptyMessage.remove(); // remove "no posts yet" message if exists
 
-    // --- 4. FUNCTION TO ADD A POST TO THE FEED ---
-    function addPostToFeed(postData) {
-        // Find and remove the "empty" message
-        const emptyMessage = document.querySelector('.post-item-empty');
-        if (emptyMessage) {
-            emptyMessage.remove();
-        }
+        const newPost = document.createElement('li'); 
+        newPost.className = 'feed-post'; // class for styling
 
-        // Create a new list item
-        const newPost = document.createElement('li');
-        newPost.className = 'feed-post'; // Use the CSS class
-
-        // Build the HTML for the post
+        // put html inside the new post
         newPost.innerHTML = 
             '<div class="post-header">' +
                 '<div class="post-avatar"></div>' +
@@ -47,43 +41,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 '</div>' +
             '</div>' +
             '<div class="post-body">' +
-                // Use a <p> tag for the text
                 '<p>' + postData.text + '</p>' +
             '</div>';
-        
-        // This inserts the newPost *before* the first child of the list
-        postList.insertBefore(newPost, postList.firstChild);
+
+        postList.insertBefore(newPost, postList.firstChild); 
+        // insertBefore(new, firstChild) = adds new post at the top
     }
 
-    // --- 5. EVENT LISTENER FOR THE "ADD POST" BUTTON ---
+    // click event to add a post
     postButton.addEventListener('click', function() {
-        // Get the text from the box
-        const postText = postTextInput.value;
+        const postText = postTextInput.value; 
 
-        // --- Simple Validation ---
-        // Check if the text is empty or just spaces
-        if (postText.trim() === "") {
-            alert('Please write something in your post!');
-            return; // Stop the function
+        if (postText.trim() === "") {  
+            alert('write something first!'); 
+            return; // stop if empty
         }
 
-        // --- Create the new post object ---
-        const newPostData = {
-            id: Date.now(), // Unique ID
-            user: 'You (The Player)',
-            time: 'Just now',
-            text: postText
+        const newPostData = {  
+            id: Date.now(), // unique timestamp id
+            user: 'you (the player)', 
+            time: 'just now', 
+            text: postText 
         };
 
-        // --- Add to our array (at the beginning) ---
-        // 'unshift' adds a new item to the start of an array
-        allPosts.unshift(newPostData);
+        allPosts.unshift(newPostData); // add to start of array
+        addPostToFeed(newPostData); // show in html
 
-        // --- Add the new post to the visible HTML feed ---
-        addPostToFeed(newPostData);
-
-        // --- Clear the text box ---
-        postTextInput.value = "";
+        postTextInput.value = ""; // clear input box
     });
 
 });

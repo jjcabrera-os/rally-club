@@ -1,57 +1,56 @@
-// Wait for the HTML document to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // wait for page to load, then run everything
 
-    // --- 1. DARK MODE LOGIC ---
-    const themeToggle = document.getElementById('checkbox');
-    const logoImage = document.querySelector('.nav-brand img');
+    const themeToggle = document.getElementById('checkbox'); 
+    // get the dark mode checkbox
+    const logoImage = document.querySelector('.nav-brand img'); 
+    // find first img inside nav-brand
 
     themeToggle.addEventListener('click', function() {
+        // when checkbox clicked
         if (themeToggle.checked) {
-            document.body.classList.add('dark-mode');
-            logoImage.src = 'courtlogo1.png'; // Dark mode logo
+            // checkbox on
+            document.body.classList.add('dark-mode'); // add dark mode class
+            logoImage.src = 'courtlogo1.png'; // change logo
         } else {
-            document.body.classList.remove('dark-mode');
-            logoImage.src = 'courtlogo.png'; // Light mode logo
+            // checkbox off
+            document.body.classList.remove('dark-mode'); // remove dark mode
+            logoImage.src = 'courtlogo.png'; // back to normal logo
         }
     });
 
+    let allGames = []; // store all games
+    let myJoinedGames = []; // store games i joined
 
-    // --- 2. CREATE OUR ARRAYS ---
-    let allGames = [];
-    let myJoinedGames = [];
+    const createButton = document.querySelector('.btn-create'); 
+    const gameList = document.querySelector('.queue-list .game-list'); 
+    const myGameList = document.querySelector('.my-games .my-game-list'); 
 
-    // --- 3. FIND ALL THE GAME ELEMENTS ---
-    const createButton = document.querySelector('.btn-create');
-    const gameList = document.querySelector('.queue-list .game-list');
-    const myGameList = document.querySelector('.my-games .my-game-list');
-    
-    // Get all the form inputs
-    const locationInput = document.getElementById('location');
-    const dateInput = document.getElementById('date');
-    const maxPlayersInput = document.getElementById('maxPlayers');
-    const priceInput = document.getElementById('price');
-    const skillInput = document.getElementById('skill');
-    const startHourInput = document.getElementById('start-hour');
-    const startMinInput = document.getElementById('start-min');
-    const startAmPmInput = document.getElementById('start-am-pm');
-    const endHourInput = document.getElementById('end-hour');
-    const endMinInput = document.getElementById('end-min');
-    const endAmPmInput = document.getElementById('end-am-pm');
-    
-    // --- 4. FUNCTION TO ADD A GAME TO THE "AVAILABLE" LIST ---
+    const locationInput = document.getElementById('location'); 
+    const dateInput = document.getElementById('date'); 
+    const maxPlayersInput = document.getElementById('maxPlayers'); 
+    const priceInput = document.getElementById('price'); 
+    const skillInput = document.getElementById('skill'); 
+    const startHourInput = document.getElementById('start-hour'); 
+    const startMinInput = document.getElementById('start-min'); 
+    const startAmPmInput = document.getElementById('start-am-pm'); 
+    const endHourInput = document.getElementById('end-hour'); 
+    const endMinInput = document.getElementById('end-min'); 
+    const endAmPmInput = document.getElementById('end-am-pm'); 
+
     function addGameToList(gameData) {
-        const emptyMessage = document.querySelector('.game-item-empty');
-        if (emptyMessage) {
-            emptyMessage.remove();
-        }
+        // show game in available list
+        const emptyMessage = document.querySelector('.game-item-empty'); 
+        if (emptyMessage) emptyMessage.remove(); // remove "no games" message
 
-        const newGame = document.createElement('li');
+        const newGame = document.createElement('li'); 
         newGame.className = 'game-item';
-        newGame.setAttribute('data-id', gameData.id);
+        newGame.setAttribute('data-id', gameData.id); 
+        // put game id inside li so we can find it later
 
         let playersText = gameData.players + ' / ' + gameData.maxPlayers + ' Players';
 
-        newGame.innerHTML = 
+        newGame.innerHTML =
             '<div class="game-info">' +
                 '<span class="game-location">' + gameData.location + '</span>' +
                 '<span class="game-item-details">' +
@@ -61,25 +60,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<span class="game-item-players">' + playersText + '</span>' +
             '</div>' +
             '<a href="#" class="game-join-btn" data-id="' + gameData.id + '">Join Game</a>';
-        
-        gameList.appendChild(newGame);
 
-        const newJoinButton = newGame.querySelector('.game-join-btn');
-        newJoinButton.addEventListener('click', onJoinGameClick);
+        gameList.appendChild(newGame); 
+        // put li at end of available games
+
+        const newJoinButton = newGame.querySelector('.game-join-btn'); 
+        // pick join button inside this li
+        newJoinButton.addEventListener('click', onJoinGameClick); 
+        // attach click listener
     }
 
-    // --- 5. FUNCTION: ADD A GAME TO THE "MY GAMES" LIST ---
     function addGameToMyList(gameData) {
-        const emptyMessage = document.querySelector('.my-game-item-empty');
-        if (emptyMessage) {
-            emptyMessage.remove();
-        }
+        // show game in my joined list
+        const emptyMessage = document.querySelector('.my-game-item-empty'); 
+        if (emptyMessage) emptyMessage.remove(); 
 
-        const newGame = document.createElement('li');
+        const newGame = document.createElement('li'); 
         newGame.className = 'my-game-item';
         newGame.setAttribute('data-id', gameData.id);
 
-        newGame.innerHTML = 
+        newGame.innerHTML =
             '<div class="game-info">' +
                 '<span class="game-location">' + gameData.location + '</span>' +
                 '<span>' +
@@ -91,94 +91,71 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<span class="my-game-players">' + gameData.players + ' / ' + gameData.maxPlayers + ' Joined</span>' +
                 '<button class="game-delete-btn" data-id="' + gameData.id + '">Delete</button>' +
             '</div>';
-        
+
         myGameList.appendChild(newGame);
 
-        const deleteButton = newGame.querySelector('.game-delete-btn');
-        deleteButton.addEventListener('click', onDeleteGameClick);
+        const deleteButton = newGame.querySelector('.game-delete-btn'); 
+        deleteButton.addEventListener('click', onDeleteGameClick); 
+        // attach delete listener
     }
 
-    // --- 6. FUNCTION: HANDLE "JOIN GAME" CLICK ---
     function onJoinGameClick(event) {
         event.preventDefault(); 
-        const gameId = event.target.getAttribute('data-id');
+        // stop link default
 
-        let alreadyJoined = false;
-        for (let i = 0; i < myJoinedGames.length; i++) {
-            if (myJoinedGames[i].id == gameId) {
-                alreadyJoined = true;
-                break;
-            }
-        }
+        const gameId = event.target.getAttribute('data-id'); 
+        // read game id
+
+        let alreadyJoined = myJoinedGames.some(game => game.id == gameId); 
+        // check if already joined
         if (alreadyJoined) {
-            alert('You have already joined this game!');
-            return; 
-        }
-
-        let gameToUpdate = null;
-        for (let i = 0; i < allGames.length; i++) {
-            if (allGames[i].id == gameId) {
-                gameToUpdate = allGames[i]; 
-                break;
-            }
-        }
-        if (gameToUpdate === null) {
+            alert('you already joined this game!');
             return;
         }
 
-        let currentPlayers = parseInt(gameToUpdate.players);
-        let maxPlayers = parseInt(gameToUpdate.maxPlayers);
+        let gameToUpdate = allGames.find(game => game.id == gameId); 
+        // find the game in available games
+        if (!gameToUpdate) return;
 
-        if (currentPlayers >= maxPlayers) {
-            alert('This game is already full!');
+        if (parseInt(gameToUpdate.players) >= parseInt(gameToUpdate.maxPlayers)) {
+            alert('game is full!');
             return;
         }
 
-        gameToUpdate.players = currentPlayers + 1;
-        myJoinedGames.push(gameToUpdate);
+        gameToUpdate.players = parseInt(gameToUpdate.players) + 1; 
+        // increase player count
+
+        myJoinedGames.push(gameToUpdate); 
         addGameToMyList(gameToUpdate); 
-        
+        // add to my list
+
         const availableListItem = document.querySelector('.game-item[data-id="' + gameId + '"]');
         if (availableListItem) {
             const playerText = availableListItem.querySelector('.game-item-players');
             playerText.innerHTML = gameToUpdate.players + ' / ' + gameToUpdate.maxPlayers + ' Players';
+            // update available list count
         }
 
-        // --- NEW: Add the alert ---
-        alert('You have successfully joined the queue!');
+        alert('joined successfully!');
     }
 
-    // --- 7. FUNCTION: HANDLE "DELETE GAME" CLICK ---
     function onDeleteGameClick(event) {
-        const gameId = event.target.getAttribute('data-id');
+        const gameId = event.target.getAttribute('data-id'); 
 
-        let newJoinedGames = [];
-        for (let i = 0; i < myJoinedGames.length; i++) {
-            if (myJoinedGames[i].id != gameId) {
-                newJoinedGames.push(myJoinedGames[i]);
-            }
-        }
-        myJoinedGames = newJoinedGames; 
+        // remove from myJoinedGames
+        myJoinedGames = myJoinedGames.filter(game => game.id != gameId); 
 
         const myListItem = document.querySelector('.my-game-item[data-id="' + gameId + '"]');
-        if (myListItem) {
-            myListItem.remove();
-        }
+        if (myListItem) myListItem.remove(); 
 
         if (myJoinedGames.length === 0) {
-            myGameList.innerHTML = '<li class="my-game-item-empty"><p>You have not joined any games.</p></li>';
+            myGameList.innerHTML = '<li class="my-game-item-empty"><p>you have not joined any games.</p></li>';
         }
 
-        let gameToUpdate = null;
-        for (let i = 0; i < allGames.length; i++) {
-            if (allGames[i].id == gameId) {
-                allGames[i].players = allGames[i].players - 1;
-                gameToUpdate = allGames[i];
-                break;
-            }
-        }
-
+        // update available games count
+        let gameToUpdate = allGames.find(game => game.id == gameId);
         if (gameToUpdate) {
+            gameToUpdate.players = parseInt(gameToUpdate.players) - 1;
             const availableListItem = document.querySelector('.game-item[data-id="' + gameId + '"]');
             if (availableListItem) {
                 const playerText = availableListItem.querySelector('.game-item-players');
@@ -187,39 +164,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-
-    // --- 8. EVENT LISTENER FOR THE "CREATE" BUTTON ---
     createButton.addEventListener('click', function(event) {
         event.preventDefault(); 
 
-        const location = locationInput.value;
-        const date = dateInput.value;
-        const maxPlayers = maxPlayersInput.value; 
-        const price = priceInput.value;
-        const skill = skillInput.value;
-        const startHour = startHourInput.value;
-        let startMin = startMinInput.value;
-        const startAmPm = startAmPmInput.value;
-        const endHour = endHourInput.value;
-        let endMin = endMinInput.value;
-        const endAmPm = endAmPmInput.value;
-        
+        let location = locationInput.value;
+        let date = dateInput.value;
+        let maxPlayers = maxPlayersInput.value;
+        let price = priceInput.value;
+        let skill = skillInput.value;
+        let startHour = startHourInput.value;
+        let startMin = startMinInput.value || '00'; 
+        let startAmPm = startAmPmInput.value;
+        let endHour = endHourInput.value;
+        let endMin = endMinInput.value || '00';
+        let endAmPm = endAmPmInput.value;
+
         if (!location || !date || !maxPlayers || !price) {
-            alert('Please fill out all fields: location, date, max players, and price.');
-            return;
-        }
-        if (!startHour || !endHour) {
-            alert('Please fill out at least the start and end hour.');
+            alert('please fill all required fields');
             return;
         }
 
-        if (startMin.length === 1) { startMin = '0' + startMin; }
-        if (startMin === "") { startMin = '00'; }
-        if (endMin.length === 1) { endMin = '0' + endMin; }
-        if (endMin === "") { endMin = '00'; }
+        if (startMin.length === 1) startMin = '0' + startMin; 
+        if (endMin.length === 1) endMin = '0' + endMin; 
 
-        const formattedTime = startHour + ':' + startMin + ' ' + startAmPm + ' to ' + endHour + ':' + endMin + ' ' + endAmPm;
-        const formattedDate = new Date(date + 'T00:00:00').toDateString();
+        let formattedTime = startHour + ':' + startMin + ' ' + startAmPm + ' to ' + endHour + ':' + endMin + ' ' + endAmPm;
+        let formattedDate = new Date(date + 'T00:00:00').toDateString(); 
+        // convert date to readable format
 
         const newGameData = {
             id: Date.now(), 
@@ -229,13 +199,10 @@ document.addEventListener('DOMContentLoaded', function() {
             maxPlayers: parseInt(maxPlayers),
             price: parseInt(price),
             skill: skill,
-            players: 1 
+            players: 1
         };
- 
-        allGames.push(newGameData);
-        addGameToList(newGameData);
 
-
+        allGames.push(newGameData); 
+        addGameToList(newGameData); 
     });
-
 });

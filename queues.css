@@ -446,7 +446,7 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-/* ======== "Parisian Autumn" DARK MODE STYLES ======== */
+/* ======== DARK MODE STYLES ======== */
 
 body.dark-mode {
     background-image: none;

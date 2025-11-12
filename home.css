@@ -1,6 +1,7 @@
 /* ======== BASIC SETUP ======== */
 html, body {
     font-family: 'Inter', sans-serif;
+    height: 100%;
     margin: 0;
     padding: 0;
     background-color: #e5f3e5; 
@@ -304,3 +305,4 @@ body.dark-mode .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
 }
+

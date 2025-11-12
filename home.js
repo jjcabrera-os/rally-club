@@ -1,40 +1,23 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() { 
+    // run code when page is fully loaded
 
-    // --- 1. FIND THE ELEMENTS ---
-    // Find the checkbox for the dark mode toggle
+    // grab the checkbox for dark mode
     const themeToggle = document.getElementById('checkbox');
-    
-    // NEW: Find the logo image
-    // document.querySelector looks for the first <img> tag inside an element with the class "nav-brand"
+
+    // grab the logo image inside the nav-brand class
     const logoImage = document.querySelector('.nav-brand img');
 
-
-    // --- 2. ADD EVENT LISTENER ---
-    // Listen for a 'click' event on the toggle
+    // listen for clicks on the toggle
     themeToggle.addEventListener('click', function() {
-        
-        // --- 3. CHECK THE TOGGLE STATE ---
-        // 'themeToggle.checked' will be true if it's on
-        
         if (themeToggle.checked) {
-            // --- TURN DARK MODE ON ---
-            
-            // Add the 'dark-mode' class to the <body>
-            document.body.classList.add('dark-mode');
-            
-            // NEW: Change the image source
-            logoImage.src = 'courtlogo1.png';
-
+            // if checkbox is checked, turn dark mode on
+            document.body.classList.add('dark-mode'); // add dark mode class
+            logoImage.src = 'courtlogo1.png'; // switch logo to dark version
         } else {
-            // --- TURN DARK MODE OFF ---
-            
-            // Remove the 'dark-mode' class
-            document.body.classList.remove('dark-mode');
-            
-            // NEW: Change the image back to the original
-            logoImage.src = 'courtlogo.png';
+            // if checkbox is not checked, turn dark mode off
+            document.body.classList.remove('dark-mode'); // remove dark mode class
+            logoImage.src = 'courtlogo.png'; // switch logo back to light version
         }
-
     });
 
 });
